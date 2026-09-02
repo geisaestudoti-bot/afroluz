@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AfroLuz | Tranças</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --preto: #0d0907;
+            --marrom: #17100c;
+            --marrom-claro: #211610;
+            --dourado: #dca54a;
+            --dourado-claro: #f1c875;
+            --creme: #f4ede5;
+            --texto: #bdb0a6;
+            --linha: rgba(220,165,74,.20);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--preto);
+            color: var(--creme);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           BARRA DE MENU
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(13, 9, 7, .78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid var(--linha);
+        }
+
+        .menu {
+            width: min(1180px, 100%);
+            min-height: 76px;
+
+            margin: auto;
+            padding: 0 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: var(--dourado-claro);
+
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 34px;
+            font-weight: 600;
+
+            letter-spacing: 5px;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 27px;
+        }
+
+        nav a {
+            position: relative;
+
+            color: #e9ded4;
+
+            text-decoration: none;
+
+            font-size: 9px;
+            font-weight: 600;
+
+            letter-spacing: 1.8px;
+
+            transition: .3s ease;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 50%;
+            bottom: -9px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--dourado);
+
+            transform: translateX(-50%);
+            transition: .3s ease;
+        }
+
+        nav a:hover {
+            color: var(--dourado-claro);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* =========================
+           CAPA
+        ========================= */
+
+        .capa {
+            min-height: 100vh;
+
+            position: relative;
+
+            display: grid;
+            grid-template-columns: 1fr 430px;
+            align-items: center;
+
+            gap: 90px;
+
+            width: min(1180px, 100%);
+            margin: auto;
+
+            padding: 140px 40px 90px;
+        }
+
+        .capa::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -180px;
+            top: 18%;
+
+            border-radius: 50%;
+
+            background: rgba(220,165,74,.055);
+
+            filter: blur(50px);
+
+            pointer-events: none;
+        }
+
+        .texto {
+            position: relative;
+            z-index: 2;
+
+            animation: aparecer 1s ease forwards;
+        }
+
+        .subtitulo {
+            color: var(--dourado);
+
+            font-size: 9px;
+            font-weight: 700;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--dourado-claro);
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: clamp(76px, 10vw, 125px);
+
+            font-weight: 500;
+
+            line-height: .78;
+
+            letter-spacing: 9px;
+
+            margin-bottom: 35px;
+        }
+
+        .descricao {
+            max-width: 430px;
+
+            color: var(--texto);
+
+            font-size: 14px;
+            font-weight: 300;
+
+            line-height: 2;
+
+            margin-bottom: 34px;
+        }
+
+        /* =========================
+           BOTÕES
+        ========================= */
+
+        .botao {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 50px;
+
+            padding: 0 27px;
+
+            border: 1px solid var(--dourado);
+
+            background: var(--dourado);
+            color: #17100b;
+
+            text-decoration: none;
+
+            font-size: 9px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: .35s ease;
+        }
+
+        .botao:hover {
+            background: transparent;
+            color: var(--dourado-claro);
+
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           FOTO DA CAPA
+        ========================= */
+
+        .foto {
+            width: 430px;
+            height: 570px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #20150f;
+
+            border: 1px solid rgba(220,165,74,.30);
+
+            box-shadow:
+                0 40px 100px rgba(0,0,0,.62);
+
+            animation: subir 1.2s ease forwards;
+        }
+
+        .foto::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 15px;
+
+            border: 1px solid rgba(241,200,117,.40);
+
+            z-index: 2;
+
+            pointer-events: none;
+        }
+
+        .foto::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.08),
+                    transparent 30%,
+                    rgba(0,0,0,.20)
+                );
+
+            z-index: 1;
+
+            pointer-events: none;
+        }
+
+        .foto img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            filter:
+                brightness(.97)
+                contrast(1.04)
+                saturate(.96);
+
+            transition: transform 1s ease;
+        }
+
+        .foto:hover img {
+            transform: scale(1.035);
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        section {
+            position: relative;
+        }
+
+        .titulo-secao {
+            width: min(700px, 100%);
+
+            margin: 0 auto 60px;
+
+            text-align: center;
+        }
+
+        .titulo-secao h2 {
+            color: var(--dourado-claro);
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: clamp(42px, 6vw, 62px);
+
+            font-weight: 500;
+
+            line-height: .95;
+
+            margin-bottom: 18px;
+        }
+
+        .titulo-secao p:not(.subtitulo) {
+            color: var(--texto);
+
+            font-size: 13px;
+            font-weight: 300;
+
+            line-height: 1.9;
+        }
+
+        /* =========================
+           SERVIÇOS
+        ========================= */
+
+        .servicos {
+            padding: 130px 30px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(220,165,74,.07),
+                    transparent 35%
+                ),
+                var(--marrom);
+        }
+
+        .cards-servicos {
+            width: min(1080px, 100%);
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+        .card {
+            min-height: 215px;
+
+            position: relative;
+
+            padding: 35px 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.025),
+                    rgba(255,255,255,0)
+                ),
+                #1a120e;
+
+            border: 1px solid rgba(220,165,74,.14);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            overflow: hidden;
+
+            transition: .4s ease;
+        }
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+
+            right: -30px;
+            top: -30px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(220,165,74,.15);
+
+            transition: .4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+
+            border-color: rgba(220,165,74,.42);
+
+            box-shadow: 0 25px 55px rgba(0,0,0,.30);
+        }
+
+        .card:hover::before {
+            transform: scale(1.8);
+        }
+
+        .numero {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+
+            color: rgba(220,165,74,.45);
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 18px;
+        }
+
+        .card h3 {
+            color: var(--dourado-claro);
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 30px;
+            font-weight: 500;
+
+            margin-bottom: 9px;
+        }
+
+        .card p {
+            color: var(--texto);
+
+            font-size: 11px;
+            font-weight: 300;
+
+            line-height: 1.7;
+
+            max-width: 250px;
+        }
+
+        /* =========================
+           VALORES
+        ========================= */
+
+        .valores {
+            padding: 130px 30px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #1b130f,
+                    #120c09
+                );
+        }
+
+        .lista-valores {
+            width: min(650px, 100%);
+
+            margin: 40px auto 0;
+
+            display: none;
+
+            border-top: 1px solid var(--linha);
+        }
+
+        .lista-valores.aberto {
+            display: block;
+
+            animation: aparecer .4s ease;
+        }
+
+        .valor {
+            min-height: 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 8px;
+
+            border-bottom: 1px solid rgba(220,165,74,.14);
+        }
+
+        .valor span {
+            color: #e7ddd5;
+
+            font-size: 12px;
+        }
+
+        .valor strong {
+            color: var(--dourado-claro);
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           LOCALIZAÇÃO
+        ========================= */
+
+        .localizacao {
+            padding: 130px 30px;
+
+            text-align: center;
+
+            background: var(--preto);
+        }
+
+        .localizacao .titulo-secao {
+            margin-bottom: 38px;
+        }
+
+        /* =========================
+           CONTATO
+        ========================= */
+
+        .contato {
+            padding: 135px 30px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(220,165,74,.08),
+                    transparent 35%
+                ),
+                #1a120e;
+        }
+
+        .texto-contato {
+            width: min(500px, 100%);
+
+            margin: 0 auto 35px;
+
+            color: var(--texto);
+
+            font-size: 13px;
+            font-weight: 300;
+
+            line-height: 1.9;
+        }
+
+        .botoes-contato {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .instagram {
+            background: transparent;
+            color: var(--dourado-claro);
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            padding: 42px 20px;
+
+            text-align: center;
+
+            background: #090604;
+
+            color: #71655d;
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            border-top: 1px solid rgba(220,165,74,.12);
+        }
+
+        /* =========================
+           WHATSAPP
+        ========================= */
+
+        .whatsapp-flutuante {
+            position: fixed;
+
+            right: 24px;
+            bottom: 24px;
+
+            width: 56px;
+            height: 56px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--dourado);
+
+            color: #17100b;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,.45);
+
+            z-index: 999;
+
+            transition: .3s ease;
+        }
+
+        .whatsapp-flutuante:hover {
+            transform: scale(1.1);
+        }
+
+        /* =========================
+           ANIMAÇÕES
+        ========================= */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subir {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .menu {
+                padding: 18px 22px;
+            }
+
+            .capa {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                gap: 55px;
+
+                padding: 120px 25px 85px;
+            }
+
+            .texto {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .descricao {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .foto {
+                width: 320px;
+                height: 430px;
+
+                margin: auto;
+            }
+
+            .cards-servicos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                position: relative;
+            }
+
+            .menu {
+                flex-direction: column;
+
+                gap: 17px;
+
+                padding: 20px 15px;
+            }
+
+            .logo {
+                font-size: 31px;
+            }
+
+            nav {
+                gap: 12px;
+
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 8px;
+
+                letter-spacing: 1.1px;
+            }
+
+            nav a::after {
+                display: none;
+            }
+
+            .capa {
+                padding: 85px 20px 75px;
+
+                gap: 45px;
+            }
+
+            h1 {
+                font-size: 65px;
+
+                letter-spacing: 5px;
+            }
+
+            .subtitulo {
+                font-size: 8px;
+
+                letter-spacing: 3px;
+            }
+
+            .descricao {
+                font-size: 13px;
+            }
+
+            .foto {
+                width: min(300px, 90vw);
+                height: 400px;
+            }
+
+            .botao {
+                min-height: 48px;
+
+                padding: 0 23px;
+
+                font-size: 8px;
+            }
+
+            .servicos,
+            .valores,
+            .localizacao,
+            .contato {
+                padding: 90px 18px;
+            }
+
+            .titulo-secao {
+                margin-bottom: 45px;
+            }
+
+            .titulo-secao h2 {
+                font-size: 42px;
+            }
+
+            .cards-servicos {
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+            }
+
+            .card {
+                min-height: 190px;
+            }
+
+            .lista-valores {
+                margin-top: 32px;
+            }
+
+            .valor {
+                min-height: 58px;
+            }
+
+            .valor span {
+                font-size: 11px;
+            }
+
+            .valor strong {
+                font-size: 21px;
+            }
+
+            .whatsapp-flutuante {
+                width: 51px;
+                height: 51px;
+
+                right: 17px;
+                bottom: 17px;
+            }
+        }
+
+        @media (max-width: 380px) {
+
+            h1 {
+                font-size: 55px;
+            }
+
+            .titulo-secao h2 {
+                font-size: 36px;
+            }
+
+            nav {
+                gap: 9px;
+            }
+
+            nav a {
+                font-size: 7px;
+            }
+
+            .foto {
+                width: 270px;
+                height: 360px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<header>
+
+    <div class="menu">
+
+        <a href="#inicio" class="logo">
+            AFROLUZ
+        </a>
+
+        <nav>
+
+            <a href="#inicio">INÍCIO</a>
+
+            <a href="#servicos">SERVIÇOS</a>
+
+            <a href="#valores">VALORES</a>
+
+            <a href="#localizacao">LOCALIZAÇÃO</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     CAPA
+========================= -->
+
+<section class="capa" id="inicio">
+
+    <div class="texto">
+
+        <p class="subtitulo">
+            TRANÇAS • ESTILO • BELEZA
+        </p>
+
+        <h1>
+            AFROLUZ
+        </h1>
+
+        <p class="descricao">
+            Tranças feitas com cuidado, técnica e atenção
+            aos detalhes.
+        </p>
+
+        <a
+                href="https://wa.me/5548996252546?text=Oi!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20AfroLuz."
+                target="_blank"
+                class="botao">
+
+            AGENDAR HORÁRIO
+
+        </a>
+
+    </div>
+
+
+    <!-- FOTO DA CAPA -->
+
+    <div class="foto">
+
+        <img
+                src="imagens/WhatsApp%20Image%202026-08-30%20at%2016.24.34.jpeg"
+                alt="AfroLuz">
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVIÇOS
+========================= -->
+
+<section class="servicos" id="servicos">
+
+    <div class="titulo-secao">
+
+        <p class="subtitulo">
+            O QUE FAÇO
+        </p>
+
+        <h2>
+            MEUS SERVIÇOS
+        </h2>
+
+        <p>
+            Escolha o estilo que mais combina com você.
+        </p>
+
+    </div>
+
+
+    <div class="cards-servicos">
+
+        <div class="card">
+
+            <span class="numero">01</span>
+
+            <h3>Nagô</h3>
+
+            <p>
+                Tranças nagô feitas com cuidado e precisão.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="numero">02</span>
+
+            <h3>Boxeadora</h3>
+
+            <p>
+                Praticidade e estilo para diferentes ocasiões.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="numero">03</span>
+
+            <h3>Fulani</h3>
+
+            <p>
+                Um estilo marcante e cheio de personalidade.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="numero">04</span>
+
+            <h3>Crochet Braids</h3>
+
+            <p>
+                Versatilidade e praticidade para o seu visual.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="numero">05</span>
+
+            <h3>Goddess Braids</h3>
+
+            <p>
+                Um acabamento moderno e sofisticado.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="numero">06</span>
+
+            <h3>Box Braids</h3>
+
+            <p>
+                Um clássico versátil para diferentes estilos.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VALORES
+========================= -->
+
+<section class="valores" id="valores">
+
+    <div class="titulo-secao">
+
+        <p class="subtitulo">
+            INVESTIMENTO
+        </p>
+
+        <h2>
+            QUER SABER OS VALORES?
+        </h2>
+
+        <p>
+            Consulte os valores dos estilos disponíveis.
+        </p>
+
+    </div>
+
+
+    <button
+            class="botao botao-valores"
+            onclick="mostrarValores()">
+
+        VER VALORES
+
+    </button>
+
+
+    <div
+            class="lista-valores"
+            id="listaValores">
+
+        <div class="valor">
+            <span>Nagô</span>
+            <strong>R$ 100</strong>
+        </div>
+
+        <div class="valor">
+            <span>Trança Boxeadora</span>
+            <strong>R$ 70</strong>
+        </div>
+
+        <div class="valor">
+            <span>Fulani</span>
+            <strong>R$ 250</strong>
+        </div>
+
+        <div class="valor">
+            <span>Crochet Braids</span>
+            <strong>R$ 200</strong>
+        </div>
+
+        <div class="valor">
+            <span>Goddess Braids</span>
+            <strong>R$ 250</strong>
+        </div>
+
+        <div class="valor">
+            <span>Box Braids</span>
+            <strong>R$ 300</strong>
+        </div>
+
+        <div class="valor">
+            <span>Trança Lateral</span>
+            <strong>R$ 25</strong>
+        </div>
+
+        <div class="valor">
+            <span>Trança Tiara</span>
+            <strong>R$ 35</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LOCALIZAÇÃO
+========================= -->
+
+<section class="localizacao" id="localizacao">
+
+    <div class="titulo-secao">
+
+        <p class="subtitulo">
+            LOCALIZAÇÃO
+        </p>
+
+        <h2>
+            ONDE ME ENCONTRAR
+        </h2>
+
+        <p>
+            Atendimento por agendamento.
+        </p>
+
+    </div>
+
+
+    <a
+            href="https://maps.app.goo.gl/ztPULyYxHEGL2b7BA?g_st=ic"
+            target="_blank"
+            class="botao">
+
+        COMO CHEGAR
+
+    </a>
+
+</section>
+
+
+<!-- =========================
+     CONTATO
+========================= -->
+
+<section class="contato" id="contato">
+
+    <div class="titulo-secao">
+
+        <p class="subtitulo">
+            FALE COMIGO
+        </p>
+
+        <h2>
+            VAMOS AGENDAR?
+        </h2>
+
+        <p class="texto-contato">
+            Escolha seu estilo e entre em contato para
+            consultar horários e disponibilidade.
+        </p>
+
+    </div>
+
+
+    <div class="botoes-contato">
+
+        <a
+                href="https://wa.me/5548996252546"
+                target="_blank"
+                class="botao">
+
+            WHATSAPP
+
+        </a>
+
+
+        <a
+                href="https://instagram.com/afro_luz_"
+                target="_blank"
+                class="botao instagram">
+
+            INSTAGRAM
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
+<footer>
+
+    ©️ AFROLUZ — TRANÇAS & BELEZA
+
+</footer>
+
+
+<!-- =========================
+     WHATSAPP FLUTUANTE
+========================= -->
+
+<a
+        href="https://wa.me/5548996252546"
+        target="_blank"
+        class="whatsapp-flutuante"
+        aria-label="WhatsApp">
+
+    ☎
+
+</a>
+
+
+<script>
+
+    function mostrarValores() {
+
+        const lista =
+            document.getElementById("listaValores");
+
+        const botao =
+            document.querySelector(".botao-valores");
+
+
+        if (lista.classList.contains("aberto")) {
+
+            lista.classList.remove("aberto");
+
+            botao.textContent = "VER VALORES";
+
+        } else {
+
+            lista.classList.add("aberto");
+
+            botao.textContent = "OCULTAR VALORES";
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
